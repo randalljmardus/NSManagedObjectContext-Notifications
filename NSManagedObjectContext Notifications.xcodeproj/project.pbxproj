@@ -12,6 +12,9 @@
 		1560A6191C776F9F00F1501F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1560A6171C776F9F00F1501F /* Main.storyboard */; };
 		1560A61B1C776F9F00F1501F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1560A61A1C776F9F00F1501F /* Assets.xcassets */; };
 		1560A61E1C776F9F00F1501F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1560A61C1C776F9F00F1501F /* LaunchScreen.storyboard */; };
+		1560A6271C77702800F1501F /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1560A6251C77702800F1501F /* Model.xcdatamodeld */; };
+		1560A62A1C77709400F1501F /* Bike+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1560A6281C77709400F1501F /* Bike+CoreDataProperties.swift */; };
+		1560A62B1C77709400F1501F /* Bike.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1560A6291C77709400F1501F /* Bike.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +25,9 @@
 		1560A61A1C776F9F00F1501F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1560A61D1C776F9F00F1501F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1560A61F1C776F9F00F1501F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1560A6261C77702800F1501F /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		1560A6281C77709400F1501F /* Bike+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Bike+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		1560A6291C77709400F1501F /* Bike.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bike.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -38,6 +44,8 @@
 		1560A6071C776F9E00F1501F = {
 			isa = PBXGroup;
 			children = (
+				1560A6281C77709400F1501F /* Bike+CoreDataProperties.swift */,
+				1560A6291C77709400F1501F /* Bike.swift */,
 				1560A6121C776F9F00F1501F /* NSManagedObjectContext Notifications */,
 				1560A6111C776F9F00F1501F /* Products */,
 			);
@@ -58,6 +66,7 @@
 				1560A6151C776F9F00F1501F /* ViewController.swift */,
 				1560A6171C776F9F00F1501F /* Main.storyboard */,
 				1560A61A1C776F9F00F1501F /* Assets.xcassets */,
+				1560A6251C77702800F1501F /* Model.xcdatamodeld */,
 				1560A61C1C776F9F00F1501F /* LaunchScreen.storyboard */,
 				1560A61F1C776F9F00F1501F /* Info.plist */,
 			);
@@ -137,6 +146,9 @@
 			files = (
 				1560A6161C776F9F00F1501F /* ViewController.swift in Sources */,
 				1560A6141C776F9F00F1501F /* AppDelegate.swift in Sources */,
+				1560A62B1C77709400F1501F /* Bike.swift in Sources */,
+				1560A62A1C77709400F1501F /* Bike+CoreDataProperties.swift in Sources */,
+				1560A6271C77702800F1501F /* Model.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -288,6 +300,20 @@
 			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		1560A6251C77702800F1501F /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				1560A6261C77702800F1501F /* Model.xcdatamodel */,
+			);
+			currentVersion = 1560A6261C77702800F1501F /* Model.xcdatamodel */;
+			name = Model.xcdatamodeld;
+			path = ../Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 1560A6081C776F9E00F1501F /* Project object */;
 }
