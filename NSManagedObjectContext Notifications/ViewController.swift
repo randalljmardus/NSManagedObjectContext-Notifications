@@ -23,7 +23,10 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
     
-    createData()
+   // createData()
+        fetchBikes(context!)
+        
+        
     
     }
 
@@ -55,5 +58,25 @@ class ViewController: UIViewController {
             print("Error saving.")
         }
     }
+    
+    func fetchBikes(context: NSManagedObjectContext) -> [Bike]? {
+        let request = NSFetchRequest(entityName: "Bike")
+        let descriptor = NSSortDescriptor(key: "name", ascending: true)
+        request.sortDescriptors = [descriptor]
+        
+        do {
+            guard let bikes = try context.executeFetchRequest(request) as? [Bike] else {return nil}
+            print(bikes.map{"Name: \($0.name!), Model: \($0.model!)"}.joinWithSeparator("\n"))
+            return bikes
+        } catch {
+            print("We couldn't fetch.")
+        }
+        return nil
+    }
+    
+    
+    
+    
+    
 }
 
