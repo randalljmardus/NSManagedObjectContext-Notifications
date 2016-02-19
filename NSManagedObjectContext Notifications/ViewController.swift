@@ -24,11 +24,13 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
     
    // createData()
-        fetchBikes(context!)
         
-        
+        guard let context = context, existingBikes = fetchBikes(context) else {return}
+        updateUI(existingBikes)
     
     }
+    
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -36,9 +38,17 @@ class ViewController: UIViewController {
     }
     
     @IBAction func changeValueTapped(sender: UIButton) {
+        guard let context = context, existingBikes = fetchBikes(context) else {return}
+        changeValues(existingBikes[0])
+        updateUI(existingBikes)
     }
     
     @IBAction func saveTapped(sender: UIButton) {
+        
+        guard let context = context else {return}
+        saveToCoreData(context)
+        
+        
     }
     
     func createData() {
@@ -74,7 +84,35 @@ class ViewController: UIViewController {
         return nil
     }
     
+    func updateUI(bikes: [Bike]) {
+        messagesLabel.text = bikes.map(bikeToDescription).joinWithSeparator("\n\n")
+    }
     
+    func bikeToDescription(bike: Bike) -> String {
+        guard let name = bike.name, model = bike.model, wheelSize = bike.wheelSize else {return ""}
+        return "Name: \(name), Model: \(model), wheelSize: \(wheelSize)"
+    }
+    
+    func returnRandomString(originalName: String) -> String {
+        var numbers: String = String()
+        for _ in 0...2 {
+            numbers += String(arc4random_uniform(11))
+        }
+        return originalName + numbers
+    }
+    
+    func changeValues(bike: Bike) {
+        guard let firstName = bike.name else {return}
+        bike.name = returnRandomString(firstName)
+    }
+    
+    func saveToCoreData(context: NSManagedObjectContext) {
+        do {
+            try context.save()
+        } catch {
+            print("Error: Could not save to Core Data.")
+        }
+    }
     
     
     
