@@ -28,6 +28,10 @@ class ViewController: UIViewController {
         guard let context = context, existingBikes = fetchBikes(context) else {return}
         updateUI(existingBikes)
     
+    NSNotificationCenter.defaultCenter().addObserver(self, selector: "receivedGeneralNotification:", name: nil, object: context)
+    
+    
+    
     }
     
     
@@ -112,6 +116,10 @@ class ViewController: UIViewController {
         } catch {
             print("Error: Could not save to Core Data.")
         }
+    }
+    
+    func receivedGeneralNotification(notification: NSNotification) {
+        notificationsLabel.text = "Received a notification of some kind for NSManagedObjectContext"
     }
     
     

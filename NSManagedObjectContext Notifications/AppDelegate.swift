@@ -23,7 +23,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         context.persistentStoreCoordinator = CDHelper.sharedInstance.coordinator
         vc.context = context
         
-        
         return true
     }
 
