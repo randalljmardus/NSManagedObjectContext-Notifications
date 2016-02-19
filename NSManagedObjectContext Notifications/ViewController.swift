@@ -22,6 +22,9 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+    
+    createData()
+    
     }
 
     override func didReceiveMemoryWarning() {
@@ -35,9 +38,22 @@ class ViewController: UIViewController {
     @IBAction func saveTapped(sender: UIButton) {
     }
     
-    
-    
-
-
+    func createData() {
+        
+        let newBikes = [(name: "Snake", brand: "Giant", model: "Reign 2 LTD", wheelSize: 27.5), (name: "HardTail", brand: "Connor", model: "8500 Deore", wheelSize: 29.0)]
+        for bike in newBikes {
+            guard let newBike = NSEntityDescription.insertNewObjectForEntityForName("Bike", inManagedObjectContext: context!) as? Bike else {continue}
+            newBike.name = bike.name
+            newBike.brand = bike.brand
+            newBike.model = bike.model
+            newBike.wheelSize = bike.wheelSize
+        }
+        
+        do {
+            try context!.save()
+        } catch {
+            print("Error saving.")
+        }
+    }
 }
 
