@@ -12,6 +12,12 @@ import CoreData
 class ViewController: UIViewController {
     
     var context: NSManagedObjectContext?
+    
+    @IBOutlet weak var notificationsLabel: UILabel!
+    
+    @IBOutlet weak var messagesLabel: UILabel!
+    
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,6 +28,15 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    @IBAction func changeValueTapped(sender: UIButton) {
+    }
+    
+    @IBAction func saveTapped(sender: UIButton) {
+    }
+    
+    
+    
 
 
 }
