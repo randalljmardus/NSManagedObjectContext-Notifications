@@ -28,9 +28,9 @@ class ViewController: UIViewController {
         guard let context = context, existingBikes = fetchBikes(context) else {return}
         updateUI(existingBikes)
     
-    NSNotificationCenter.defaultCenter().addObserver(self, selector: "receivedGeneralNotification:", name: nil, object: context)
+  //  NSNotificationCenter.defaultCenter().addObserver(self, selector: "receivedGeneralNotification:", name: nil, object: context)
     
-    
+    NSNotificationCenter.defaultCenter().addObserver(self, selector: "receivedObjectChangeNotification:", name: NSManagedObjectContextObjectsDidChangeNotification, object: context)
     
     }
     
@@ -120,6 +120,14 @@ class ViewController: UIViewController {
     
     func receivedGeneralNotification(notification: NSNotification) {
         notificationsLabel.text = "Received a notification of some kind for NSManagedObjectContext"
+    }
+    
+    func receivedObjectChangeNotification(notification: NSNotification) {
+        guard let set = (notification.userInfo![NSUpdatedObjectsKey] as? NSSet) else {return}
+        let updatedItemsArray = set.allObjects
+        guard let firstItem = updatedItemsArray[0] as? Bike else {return}
+        guard let bikeName = firstItem.name else {return}
+        notificationsLabel.text = "Received a notification for a Changing Object with name: \(bikeName)."
     }
     
     
