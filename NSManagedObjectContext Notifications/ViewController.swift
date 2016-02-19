@@ -32,6 +32,10 @@ class ViewController: UIViewController {
     
     NSNotificationCenter.defaultCenter().addObserver(self, selector: "receivedObjectChangeNotification:", name: NSManagedObjectContextObjectsDidChangeNotification, object: context)
     
+        NSNotificationCenter.defaultCenter().addObserverForName(NSManagedObjectContextWillSaveNotification, object: context, queue: nil, usingBlock: {
+            _ in self.notificationsLabel.text = "Received a notification that data is going to be saved to Core Data."
+        })
+    
     }
     
     
