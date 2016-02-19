@@ -17,6 +17,8 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var messagesLabel: UILabel!
     
+    var savedObserver: NSObjectProtocol?
+    
     
 
     override func viewDidLoad() {
@@ -32,10 +34,19 @@ class ViewController: UIViewController {
     
     NSNotificationCenter.defaultCenter().addObserver(self, selector: "receivedObjectChangeNotification:", name: NSManagedObjectContextObjectsDidChangeNotification, object: context)
     
-        NSNotificationCenter.defaultCenter().addObserverForName(NSManagedObjectContextWillSaveNotification, object: context, queue: nil, usingBlock: {
-            _ in self.notificationsLabel.text = "Received a notification that data is going to be saved to Core Data."
-        })
+   // NSNotificationCenter.defaultCenter().addObserverForName(NSManagedObjectContextWillSaveNotification, object: context, queue: nil, usingBlock: {
+    //    _ in self.notificationsLabel.text = "Received a notification that data is going to be saved to Core Data."
+    //    })
     
+        savedObserver = NSNotificationCenter.defaultCenter().addObserverForName(NSManagedObjectContextDidSaveNotification, object: context, queue: nil, usingBlock: {
+            _ in self.notificationsLabel.text = "Received a notification that data was saved to Core Data."
+        })
+        
+    }
+    
+    deinit {
+        NSNotificationCenter.defaultCenter().removeObserver(self)
+        NSNotificationCenter.defaultCenter().removeObserver(savedObserver!)
     }
     
     
@@ -133,7 +144,6 @@ class ViewController: UIViewController {
         guard let bikeName = firstItem.name else {return}
         notificationsLabel.text = "Received a notification for a Changing Object with name: \(bikeName)."
     }
-    
     
     
 }
